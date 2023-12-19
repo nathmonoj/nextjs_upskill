@@ -1,5 +1,8 @@
 import React from 'react'
+import { Suspense } from 'react'
 import ArticleCard from './ArticleCard'
+import TimeBlocker from '@/app/components/TimeBlocker'
+import Loading from './loading'
 
 export const metadata = {
   title: 'Articles Dashboard'
@@ -41,17 +44,20 @@ export default function Articles() {
     }
   ]
   return (
-    <main>
-      <nav className="mb-1 pb-1">
-        <div className="block">
-          <h2 className="content-center text-2xl">Test Page</h2>
-          <div><small>Articles Dashboard</small></div>
-
-          {ticketData.map((ticket) => (
-            <ArticleCard ticket={ticket} />
-          ))}
-        </div>
-      </nav>
-    </main>
+    <>
+      <main>
+        <nav className="mb-1 pb-1">
+          <div className="block">
+            <h2 className="content-center text-2xl">Articles Dashboard</h2>
+            <div><small>All Articles Dashboard</small></div>
+            <Suspense fallback={<Loading />}>
+              {ticketData.map((ticket) => (
+                <ArticleCard key={ticket.id} ticket={ticket} />
+              ))}
+            </Suspense>
+          </div>
+        </nav>
+      </main>
+    </>
   )
 }
