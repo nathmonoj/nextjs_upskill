@@ -11,6 +11,7 @@ export default function Navbar() {
         <h1>Hepldesk <small className='text-xs'>Powered by NextJS(Poc)</small></h1>
         <Link href="/">Dashboard</Link>
         <Link href="/test-page">Test-Page</Link>
+        <Link href="/articles">Articles-Dashboard</Link>
       </div>
     </nav>
   )
